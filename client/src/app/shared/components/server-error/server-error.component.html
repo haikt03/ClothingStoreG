@@ -1,0 +1,19 @@
+<div class="container mt-5 p-4 bg-gray-100 rounded shadow-lg">
+    <h1 class="text-2xl font-semibold mb-4">Lỗi máy chủ nội bộ</h1>
+    @if (error) {
+    <h5 class="text-red-600">Lỗi: {{ error.message }}</h5>
+    <p class="font-bold mb-2">Đây là lỗi đến từ máy chủ, không phải Angular</p>
+    <p class="mb-2">Phải làm gì tiếp theo?</p>
+    <ol class="list-decimal ml-5 mb-4">
+        <li class="mb-1">Kiểm tra network tab trong công cụ chrome dev</li>
+        <li class="mb-1">
+            Tạo lại lỗi trong postman. Nếu cùng một lỗi, đừng lãng phí thời gian
+            khắc phục sự cố angular code
+        </li>
+    </ol>
+    <h5 class="text-lg font-semibold mb-2">Stack trace</h5>
+    <mat-card class="p-4 bg-white">
+        <code class="block whitespace-pre-wrap">{{ error.details }}</code>
+    </mat-card>
+    }
+</div>
