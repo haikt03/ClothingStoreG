@@ -2,11 +2,11 @@
     <div
         class="space-y-4 rounded-lg border border-gray-200 p-4 bg-white shadow-sm"
     >
-        <p class="text-xl font-semibold">Order summary</p>
+        <p class="text-xl font-semibold">Tóm tắt đơn hàng</p>
         <div class="space-y-4">
             <div class="space-y-2">
                 <dl class="flex items-center justify-between gap-4">
-                    <dt class="font-medium text-gray-500">Subtotal</dt>
+                    <dt class="font-medium text-gray-500">Tổng tiền</dt>
                     <dd class="font-medium text-gray-900">
                         {{
                             cartService.totals()?.subtotal
@@ -15,7 +15,7 @@
                     </dd>
                 </dl>
                 <dl class="flex items-center justify-between gap-4">
-                    <dt class="font-medium text-gray-500">Discount</dt>
+                    <dt class="font-medium text-gray-500">Giảm giá</dt>
                     <dd class="font-medium text-green-500">
                         -{{
                             cartService.totals()?.discount
@@ -24,7 +24,7 @@
                     </dd>
                 </dl>
                 <dl class="flex items-center justify-between gap-4">
-                    <dt class="font-medium text-gray-500">Delivery fee</dt>
+                    <dt class="font-medium text-gray-500">Phí vận chuyển</dt>
                     <dd class="font-medium text-gray-900">
                         {{
                             cartService.totals()?.shipping
@@ -48,22 +48,22 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <button routerLink="/checkout" mat-flat-button>Checkout</button>
-            <button routerLink="/shop" mat-button>Continue Shopping</button>
+            <button routerLink="/checkout" mat-flat-button>Thanh toán</button>
+            <button routerLink="/shop" mat-button>Tiếp tục mua hàng</button>
         </div>
     </div>
 
     <div class="space-y-4 rounded-lg border border-gray-200 bg-white shadow-sm">
         <form class="space-y-2 flex flex-col p-2">
             <label class="mb-2 block text-sm font-mediem">
-                Do you have a voucher code?
+                Bạn đã có mã giảm giá chưa?
             </label>
             <mat-form-field appearance="outline">
-                <mat-label>Voucher code</mat-label>
+                <mat-label>Mã giảm giá</mat-label>
                 <input type="text" matInput />
             </mat-form-field>
 
-            <button mat-flat-button>Apply code</button>
+            <button mat-flat-button>Áp dụng</button>
         </form>
     </div>
 </div>
