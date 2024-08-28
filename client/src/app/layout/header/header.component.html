@@ -18,7 +18,7 @@
                 >Trang chủ</a
             >
             <a routerLink="/shop" routerLinkActive="active">Cửa hàng</a>
-            <a routerLink="/test-error" routerLinkActive="active">Lỗi</a>
+            <!-- <a routerLink="/test-error" routerLinkActive="active">Lỗi</a> -->
         </nav>
         <div class="flex gap-3 align-middle">
             <a
@@ -30,8 +30,19 @@
             >
                 <mat-icon>shopping_cart</mat-icon>
             </a>
-            <button mat-stroked-button>Đăng nhập</button>
-            <button mat-stroked-button>Đăng ký</button>
+            @if (accountService.currentUser()) {
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>arrow_drop_down</mat-icon>
+                <span>{{ accountService.currentUser()?.email }}</span>
+            </button>
+            } @else {
+            <button routerLink="/account/login" mat-stroked-button>
+                Đăng nhập
+            </button>
+            <button routerLink="/account/register" mat-stroked-button>
+                Đăng ký
+            </button>
+            }
         </div>
     </div>
 </header>
@@ -42,3 +53,19 @@
     class="fixed top-20 z-50"
 ></mat-progress-bar>
 }
+
+<mat-menu #menu="matMenu" class="px-5">
+    <button mat-menu-item class="px-3" routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon>
+        Giỏ hàng của tôi
+    </button>
+    <button mat-menu-item class="px-3" routerLink="/orders">
+        <mat-icon>history</mat-icon>
+        Đơn hàng của tôi
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item class="px-3" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Đăng xuất
+    </button>
+</mat-menu>

@@ -63,7 +63,7 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         });
     }
 
-    [HttpGet]
+    [HttpGet("auth-status")]
     public ActionResult GetAuthState()
     {
         return Ok(new { IsAuthenticated = User.Identity?.IsAuthenticated ?? false });
@@ -86,7 +86,7 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
 
         var result = await signInManager.UserManager.UpdateAsync(user);
 
-        if (!result.Succeeded) return BadRequest("Problem updating user address");
+        if (!result.Succeeded) return BadRequest("Có vấn đề khi cập nhật địa chỉ");
 
         return Ok(user.Address.ToDto());
     }
